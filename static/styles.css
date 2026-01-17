@@ -1,0 +1,61 @@
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    #resume {
+        box-shadow: none;
+        max-width: 100%;
+    }
+    
+    .print\:hidden {
+        display: none !important;
+    }
+    
+    .print\:shadow-none {
+        box-shadow: none !important;
+    }
+    
+    .break-inside-avoid {
+        break-inside: avoid;
+    }
+    /* Ensure colors are visible in print */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Ensure gradient background prints */
+    header {
+        background: #2563eb !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Ensure skill badges print with colors */
+    .bg-blue-100 {
+        background-color: #dbeafe !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .text-blue-800 {
+        color: #1e40af !important;
+    }
+    
+    /* Ensure icons are visible */
+    svg {
+        display: inline-block !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Ensure borders are visible */
+    .border-blue-600 {
+        border-color: #2563eb !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
