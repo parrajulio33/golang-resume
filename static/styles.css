@@ -47,9 +47,32 @@
     
     /* Ensure icons are visible */
     svg {
+        color: #000 !important;
         display: inline-block !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+    }
+    span a {
+        color: #000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    span#location {
+        color: #000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    span#phone {
+        color: #000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    svg #SVGRepo_iconCarrier path {
+        fill: #000 !important;
+        -webkit-print-color-adjust: exact !important;
+         print-color-adjust: exact !important;
     }
     
     /* Ensure borders are visible */
@@ -57,5 +80,17 @@
         border-color: #2563eb !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+    }
+     /* Remove gradient background when printing */
+    header {
+        background: transparent !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    /* Make header name and title bold and black when printing */
+    header h1,
+    header p {
+        color: black !important;
+        font-weight: bold !important;
     }
 }
