@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"log"
 
 	// "net/http"
@@ -19,6 +18,7 @@ import (
 )
 
 var supabaseClient *supabase.Client
+var port string
 
 func init() {
 
@@ -29,6 +29,10 @@ func init() {
 
 	url := os.Getenv("SUPABASE_URL")
 	key := os.Getenv("SUPABASE_KEY")
+	port = os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 
 	if url == "" || key == "" {
 		log.Fatal("SUPABASE_URL and SUPABASE_KEY environment variables must be set")
@@ -52,38 +56,40 @@ func main() {
 
 	e.GET("/", handleResume)
 
-	log.Println("Server starting on :8080")
-	e.Logger.Fatal(e.Start(":8080"))
+	log.Println("Server starting on port :" + port)
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 func handleResume(c echo.Context) error {
 	// ctx := context.Background()
 
 	// Fetch resume data from Supabase
-	var resumes []models.Resume
-	data, _, err := supabaseClient.From("resumes").Select("*", "", false).Execute()
+	// var resumes models.Resume
+	// data, _, err := supabaseClient.From("resumes").Select("*", "", false).Execute()
 
-	if err != nil {
-		log.Printf("Error fetching resume: %v", err)
-		// Return sample data if database fails
-		resume := getSampleResume()
-		return renderTempl(c, templates.Resume(resume))
-	}
+	// if err != nil {
+	// 	log.Printf("Error fetching resume: %v", err)
+	// 	// Return sample data if database fails
+	// 	resume := getSampleResume()
+	// 	return renderTempl(c, templates.Resume(resume))
+	// }
 
 	// Unmarshal the data into resumes slice
-	if err := json.Unmarshal(data, &resumes); err != nil {
-		log.Printf("Error unmarshaling resume: %v", err)
-		// Return sample data if database fails
-		resume := getSampleResume()
-		return renderTempl(c, templates.Resume(resume))
-	}
+	// if err := json.Unmarshal(data, &resumes); err != nil {
+	// 	log.Printf("Error unmarshaling resume: %v", err)
+	// 	// Return sample data if database fails
+	// 	resume := getSampleResume()
+	// 	return renderTempl(c, templates.Resume(resume))
+	// }
 
-	if len(resumes) == 0 {
-		resume := getSampleResume()
-		return renderTempl(c, templates.Resume(resume))
-	}
+	// if len(resumes) == 0 {
+	// 	resume := getSampleResume()
+	// 	return renderTempl(c, templates.Resume(resume))
+	// }
 
-	return renderTempl(c, templates.Resume(resumes[0]))
+	resume := getSampleResume()
+	return renderTempl(c, templates.Resume(resume))
+	// return renderTempl(c, templates.Resume(resumes[0]))
 }
 
 func renderTempl(c echo.Context, component templ.Component) error {
