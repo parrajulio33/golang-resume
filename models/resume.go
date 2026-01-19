@@ -10,10 +10,15 @@ type Resume struct {
 	LinkedIn   string       `json:"linkedin"`
 	GitHub     string       `json:"github"`
 	About      string       `json:"about"`
-	Skills     []string     `json:"skills"`
+	Skills     []Skill      `json:"skills"`
 	Experience []Experience `json:"experience"`
 	Projects   []Projects   `json:"projects"`
 	Education  []Education  `json:"education"`
+}
+
+type Skill struct {
+	Name string `json:"name"`
+	Icon string `json:"icon"` // URL or path to icon
 }
 
 type Experience struct {

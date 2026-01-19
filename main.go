@@ -101,9 +101,9 @@ func getSampleResume() models.Resume {
 		LinkedIn: "https://www.linkedin.com/in/julio-parra-sanchez/",
 		GitHub:   "https://github.com/parrajulio33",
 		About:    "I started my passion in software developing after studying electrical engineering and realizing that it was the software, not the hardware that really spoke to me. To me, nothing is more involved than creating something new to bring into the world. I've been in both, building and managing phases of an organization and it's both the challenges and opportunities that come during hyper-growth that I'm most passionate about.",
-		Skills: []string{
-			"HTML", "CSS", "Go", "JavaScript", "React", "React Native", "Docker", "Expo",
-			"PostgreSQL", "MongoDB", "Python", "GraphQL", "REST APIs", "SQL", "NoSQL", "Firebase",
+		Skills: []models.Skill{
+			{Name: "HTML", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/html5.svg"}, {Name: "CSS", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/css3.svg"}, {Name: "Go", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/go.svg"}, {Name: "JavaScript", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/javascript.svg"}, {Name: "React", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/react.svg"}, {Name: "React Native", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/react.svg"}, {Name: "Docker", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/docker.svg"}, {Name: "Expo", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/expo.svg"},
+			{Name: "PostgreSQL", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/postgresql.svg"}, {Name: "MongoDB", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/mongodb.svg"}, {Name: "Python", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/python.svg"}, {Name: "GraphQL", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/graphql.svg"}, {Name: "REST APIs", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/postman.svg"}, {Name: "SQL", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/microsoftsqlserver.svg"}, {Name: "Angular", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/angular.svg"}, {Name: "Firebase", Icon: "https://cdn.jsdelivr.net/npm/simple-icons@3.13.0/icons/firebase.svg"},
 		},
 		Experience: []models.Experience{
 			{

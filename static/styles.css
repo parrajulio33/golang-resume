@@ -93,4 +93,9 @@
         color: black !important;
         font-weight: bold !important;
     }
+    /* section#experience {
+        margin-bottom: 24rem !important;
+        -webkit-print-margin-bottom: 24rem !important;
+        print-margin-bottom-adjust: 24rem !important;
+    } */
 }
