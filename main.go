@@ -22,10 +22,9 @@ var port string
 
 func init() {
 
-	err := godotenv.Load(); err != nil {
+	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found, reading configuration from environment variables")
 	}
-	
 
 	url := os.Getenv("SUPABASE_URL")
 	key := os.Getenv("SUPABASE_KEY")
