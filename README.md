@@ -72,11 +72,21 @@ resume-app/
 ├── main.go                 # Application entry point & server setup
 ├── models/
 │   └── resume.go          # Data models and structures
+|── node_modules           # Node modules
 ├── templates/
 │   └── resume.templ       # Templ UI templates
 ├── static/
+|   └── icon.png
 │   └── styles.css         # Custom CSS & print styles
+│   └── input.css
+│   └── output.css
+│   └── qr-code.png
 ├── go.mod                 # Go module dependencies
+├── .air.toml                 # Air toml
+├── Makefile                 # Make file
+├── netlify.toml                 # Netlify toml
+├── tailwind.config.js      # Tailwindcss config
+├── build.sh                 # Build sh
 └── README.md              # You are here!
 ```
 
