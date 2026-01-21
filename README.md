@@ -69,25 +69,28 @@ That's it! 🎉 Your resume is now running with sample data.
 
 ```
 resume-app/
-├── main.go                 # Application entry point & server setup
+├── main.go                        # Application entry point & server setup
 ├── models/
-│   └── resume.go          # Data models and structures
-|── node_modules           # Node modules
+│   └── resume.go                  # Data models and structures
+|── node_modules                   # Node modules
 ├── templates/
-│   └── resume.templ       # Templ UI templates
+│   └── resume.templ               # Templ UI templates
+├── repositories/
+│   └── resume_repository.go       # Supabase Query
+├── supabase/
+│   └── client.go                  # Supabase Client
 ├── static/
 |   └── icon.png
-│   └── styles.css         # Custom CSS & print styles
+│   └── styles.css                 # Custom CSS & print styles
 │   └── input.css
 │   └── output.css
 │   └── qr-code.png
-├── go.mod                 # Go module dependencies
-├── .air.toml                 # Air toml
-├── Makefile                 # Make file
-├── netlify.toml                 # Netlify toml
-├── tailwind.config.js      # Tailwindcss config
-├── build.sh                 # Build sh
-└── README.md              # You are here!
+├── go.mod                         # Go module dependencies
+├── .air.toml                      # Air toml
+├── Makefile                       # Make file
+├── tailwind.config.js             # Tailwindcss config
+├── nixpacks.toml                  # Toml file if you want to deploy it on Railway Cloud Services
+└── README.md                      # You are here!
 ```
 
 ## 🎨 Tech Stack
