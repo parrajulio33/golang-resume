@@ -1,2 +1,8 @@
 .env
 tmp/
+
+*_templ.go
+node_modules/
+static/output.css
+.air.toml
+main
