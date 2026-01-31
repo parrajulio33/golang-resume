@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -56,6 +57,9 @@ func main() {
 		if err != nil {
 			return c.String(http.StatusInternalServerError, err.Error())
 		}
+
+		// print the resume object to the console for debugging
+		fmt.Printf("StartDate: '%s'\n", resume.Experience[0].Start)
 
 		c.Response().Header().Set(echo.HeaderContentType, echo.MIMETextHTML)
 		return templates.Resume(resume).Render(

@@ -25,8 +25,8 @@ type Experience struct {
 	Company     string `json:"company"`
 	WebPage     string `json:"webpage"`
 	Position    string `json:"position"`
-	StartDate   string `json:"start_date"`
-	EndDate     string `json:"end_date"`
+	Start       string `json:"start"`
+	End         string `json:"end"`
 	Description string `json:"description"`
 }
 
