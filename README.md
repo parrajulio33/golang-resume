@@ -145,10 +145,10 @@ go run main.go
 
 ### Environment Variables
 
-| Variable            | Required | Description                   |
-| ------------------- | -------- | ----------------------------- |
-| `SUPABASE_URL`      | No       | Your Supabase project URL     |
-| `SUPABASE_ANON_KEY` | No       | Your Supabase anon/public key |
+| Variable            | Required  | Description                   |
+| ------------------- | --------- | ----------------------------- |
+| `SUPABASE_URL`      | Yes       | Your Supabase project URL     |
+| `SUPABASE_ANON_KEY` | Yes       | Your Supabase anon/public key |
 
 _Note: App works without these using sample data_
 
