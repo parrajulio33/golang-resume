@@ -134,7 +134,7 @@ CREATE TABLE resumes (
 
 ```bash
 export SUPABASE_URL="https://your-project.supabase.co"
-export SUPABASE_KEY="your-anon-key"
+export SUPABASE_ANON_KEY="your-anon-key"
 ```
 
 4. **Restart the application**:
