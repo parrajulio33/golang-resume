@@ -1,6 +1,6 @@
-# 📄 Go Resume Builder
+# 📄 Go Resume
 
-A modern, responsive resume application built with Go, featuring beautiful UI and seamless database integration.
+A modern, responsive resume application built with Go, featuring UI and seamless database integration.
 
 ![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -8,7 +8,7 @@ A modern, responsive resume application built with Go, featuring beautiful UI an
 
 ## ✨ Features
 
-- 🎨 **Beautiful UI** - Modern, professional design with TailwindCSS
+- 🎨 **UI** - Modern, professional design with TailwindCSS
 - 📱 **Fully Responsive** - Perfect on desktop, tablet, and mobile
 - 🖨️ **Print Optimized** - Print-ready with preserved colors and styling
 - ⌨️ **Keyboard Shortcuts** - Quick print with `Ctrl+P` or `Cmd+P`
@@ -63,7 +63,7 @@ go run main.go
 http://localhost:8080
 ```
 
-That's it! 🎉 Your resume is now running with sample data.
+That's it! 🎉 the resume is now running with sample data.
 
 ## 🏗️ Project Structure
 
@@ -145,10 +145,10 @@ go run main.go
 
 ### Environment Variables
 
-| Variable       | Required | Description                   |
-| -------------- | -------- | ----------------------------- |
-| `SUPABASE_URL` | No       | Your Supabase project URL     |
-| `SUPABASE_KEY` | No       | Your Supabase anon/public key |
+| Variable            | Required | Description                   |
+| ------------------- | -------- | ----------------------------- |
+| `SUPABASE_URL`      | No       | Your Supabase project URL     |
+| `SUPABASE_ANON_KEY` | No       | Your Supabase anon/public key |
 
 _Note: App works without these using sample data_
 
@@ -307,7 +307,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - julio.parra.dev@gmail.com@
+Email - parrajulio33@gmail.com
 
 Project Link: [https://github.com/parrajulio33/golang-resume](https://github.com/parrajulio33/golang-resume)
 
