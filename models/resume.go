@@ -1,19 +1,23 @@
 package models
 
 type Resume struct {
-	ID         string       `json:"id"`
-	Name       string       `json:"name"`
-	Title      string       `json:"title"`
-	Email      string       `json:"email"`
-	Phone      string       `json:"phone"`
-	Location   string       `json:"location"`
-	LinkedIn   string       `json:"linkedin"`
-	GitHub     string       `json:"github"`
-	About      string       `json:"about"`
-	Skills     []Skill      `json:"skills"`
-	Experience []Experience `json:"experience"`
-	Projects   []Projects   `json:"projects"`
-	Education  []Education  `json:"education"`
+	ID                string       `json:"id"`
+	Name              string       `json:"name"`
+	Title             string       `json:"title"`
+	Email             string       `json:"email"`
+	Phone             string       `json:"phone"`
+	Location          string       `json:"location"`
+	LinkedIn          string       `json:"linkedin"`
+	GitHub            string       `json:"github"`
+	About             string       `json:"about"`
+	Skills            []Skill      `json:"skills"`
+	Experience        []Experience `json:"experience"`
+	Projects          []Projects   `json:"projects"`
+	Education         []Education  `json:"education"`
+	IsVisibleEmail    bool         `json:"isvisibleemail"`
+	IsVisiblePhone    bool         `json:"isvisiblephone"`
+	IsVisibleLinkedIn bool         `json:"isvisiblelinkedin"`
+	IsVisibleGitHub   bool         `json:"isvisiblegithub"`
 }
 
 type Skill struct {
