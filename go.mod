@@ -3,7 +3,7 @@ module resume-app
 go 1.25
 
 require (
-	github.com/a-h/templ v0.3.977
+	github.com/a-h/templ v0.3.1001
 	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo/v4 v4.15.0
 	github.com/supabase-community/supabase-go v0.0.4

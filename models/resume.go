@@ -26,12 +26,14 @@ type Skill struct {
 }
 
 type Experience struct {
-	Company     string `json:"company"`
-	WebPage     string `json:"webpage"`
-	Position    string `json:"position"`
-	Start       string `json:"start"`
-	End         string `json:"end"`
-	Description string `json:"description"`
+	Company          string   `json:"company"`
+	WebPage          string   `json:"webpage"`
+	Position         string   `json:"position"`
+	Start            string   `json:"start"`
+	End              string   `json:"end"`
+	Description      string   `json:"description"`
+	Responsibilities []string `json:"responsibilities"`
+	Technologies     []string `json:"technologies"`
 }
 
 type Projects struct {
