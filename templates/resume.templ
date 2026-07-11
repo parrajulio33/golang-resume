@@ -96,11 +96,11 @@ templ Resume(r models.Resume) {
                 </section>
 
                 <!-- Experience -->
-                <section id="experience" class="mb-16 print:break-before-page print:pt-8">
+                <section id="experience" class="mb-16 print:pt-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2">Experience</h2>
                     for _, exp := range r.Experience {
-                        <div class="mb-6 break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                        <div class="mb-6">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 break-inside-avoid">
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-800">{ exp.Position }</h3>
                                     <a href={ exp.WebPage } class="text-blue-600 font-medium hover:underline hover:text-blue-700" target="_blank" rel="noopener noreferrer">{ exp.Company }</a>
@@ -110,19 +110,24 @@ templ Resume(r models.Resume) {
                             </div>
                             <div>
                                 <p class="underline font-semibold">Responsibilities:</p>
-                                for _, r := range exp.Responsibilities {
-                                    <ul class="list-disc px-4">
+                                <ul class="list-disc px-4">
+                                    for _, r := range exp.Responsibilities {
                                         <li>{r}</li>
-                                    </ul>
-                                }
+                                    }
+                                </ul>
                             </div>
                             <div class="mt-2">
                                 <p class="underline font-semibold">Tech Stack:</p>
-                                for _, t := range exp.Technologies {
+                                <ul class="list-disc px-4">
+                                    for _, t := range exp.Technologies {
+                                        <li>{t}</li>
+                                    }
+                                </ul>
+                                <!--for _, t := range exp.Technologies {
                                     <ul class="list-disc px-4">
                                         <li>{t}</li>
                                     </ul>
-                                }
+                                } -->
                             </div>
                             <!--<p class="text-gray-700 leading-relaxed">{ exp.Description }</p>-->
                         </div>
