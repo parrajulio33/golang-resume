@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
 	"os"
 
-	"resume-app/models"
+	"resume-app/custom_middleware"
 	"resume-app/repositories"
+	"resume-app/session"
 	"resume-app/supabase"
 	"resume-app/templates"
 
@@ -27,6 +27,7 @@ func init() {
 
 	url := os.Getenv("SUPABASE_URL")
 	key := os.Getenv("SUPABASE_ANON_KEY")
+	session.Init(os.Getenv("SESSION_SECRET"))
 	port = os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -46,6 +47,7 @@ func main() {
 	e.Use(middleware.RequestLogger())
 	e.Use(middleware.Recover())
 	e.Pre(middleware.AddTrailingSlash())
+	// e.Pre(middleware.RemoveTrailingSlash())
 	// e.Use(middleware.CORS())
 
 	e.Static("/static", "static")
@@ -74,76 +76,53 @@ func main() {
 	// Admin routes
 	adminGroup := e.Group("/admin")
 
-	// adminGroup.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
-	// 	return username == os.Getenv("ADMIN_USERNAME") && password == os.Getenv("ADMIN_PASSWORD"), nil
-	// }))
-
 	adminGroup.GET("/", func(c echo.Context) error {
+		if session.GetUserID(c) != "" {
+			return c.Redirect(http.StatusFound, "/admin/dashboard")
+		}
+		c.Response().Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+		c.Response().Header().Set("Pragma", "no-cache")
+		c.Response().Header().Set("Expires", "0")
+
+		return templates.Login("").Render(c.Request().Context(), c.Response())
+	})
+
+	adminGroup.POST("/login/", func(c echo.Context) error {
+		email := c.FormValue("email")
+		password := c.FormValue("password")
+
 		client, err := supabase.NewClient()
 		if err != nil {
 			return c.String(http.StatusInternalServerError, err.Error())
 		}
 
-		user, err := repositories.Login(client, os.Getenv("ADMIN_USERNAME"), os.Getenv("ADMIN_PASSWORD"))
-
-		// if user == (models.User{}) {
-		// 	return c.String(http.StatusUnauthorized, "Invalid admin credentials")
-		// }
-		if user == (models.User{}) {
-			return c.String(http.StatusUnauthorized, "Invalid admin credentials")
+		user, err := repositories.Login(client, email, password)
+		if err != nil || user.ID.String() == "" {
+			return templates.Login("Invalid admin credentials").Render(c.Request().Context(), c.Response())
 		}
 
-		if err != nil {
+		if err := session.SetUser(c, user.ID.String(), user.Email, user.DisplayName); err != nil {
+			return c.String(http.StatusInternalServerError, "Failed to create session")
+		}
+
+		// without re-calling Login every time
+		return c.Redirect(http.StatusFound, "/admin/dashboard/")
+	})
+
+	adminGroup.POST("/logout/", func(c echo.Context) error {
+		if err := session.Clear(c); err != nil {
 			return c.String(http.StatusInternalServerError, err.Error())
 		}
-
-		return c.String(http.StatusOK, "Admin Dashboard")
+		return c.Redirect(http.StatusFound, "/admin/")
 	})
 
-	adminGroup.GET("/edit/", func(c echo.Context) error {
-		// client, err := supabase.NewClient()
-		// if err != nil {
-		// 	return c.String(http.StatusInternalServerError, err.Error())
-		// }
+	adminGroup.GET("/dashboard/", func(c echo.Context) error {
+		return templates.Dashboard(session.GetDisplayName(c)).Render(c.Request().Context(), c.Response())
+	}, custom_middleware.RequireAdmin)
 
-		// resume, err := repositories.GetResume(client)
-		// if err != nil {
-		// 	return c.String(http.StatusInternalServerError, err.Error())
-		// }
-
-		// c.Response().Header().Set(echo.HeaderContentType, echo.MIMETextHTML)
-		// return templates.EditResume(resume).Render(
-		// 	c.Request().Context(),
-		// 	c.Response(),
-		// )
-		return c.String(http.StatusOK, "Edit Resume Page - Not Implemented")
-	})
-
-	// adminGroup.POST("/edit", func(c echo.Context) error {
-	// 	// client, err := supabase.NewClient()
-	// 	// if err != nil {
-	// 	// 	return c.String(http.StatusInternalServerError, err.Error())
-	// 	// }
-
-	// 	// resume, err := repositories.GetResume(client)
-	// 	// if err != nil {
-	// 	// 	return c.String(http.StatusInternalServerError, err.Error())
-	// 	// }
-
-	// 	// if err := c.Bind(&resume); err != nil {
-	// 	// 	return c.String(http.StatusBadRequest, err.Error())
-	// 	// }
-
-	// 	// if err := repositories.UpdateResume(client, resume); err != nil {
-	// 	// 	return c.String(http.StatusInternalServerError, err.Error())
-	// 	// }
-
-	// 	// return c.Redirect(http.StatusSeeOther, "/admin/edit")
-	// })
-
-	for _, r := range e.Routes() {
-		fmt.Println(r.Method, r.Path)
-	}
+	// for _, r := range e.Routes() {
+	// 	fmt.Println(r.Method, r.Path)
+	// }
 
 	log.Printf("Starting server on port %s", port)
 

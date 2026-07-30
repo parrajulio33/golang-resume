@@ -101,4 +101,15 @@
     section#experience h2 {
         break-after: avoid-page;
     } 
+.home-link {
+	display: block;
+	margin-top: 1.25rem;
+	text-align: center;
+	font-size: 0.85rem;
+	color: #4f46e5;
+	text-decoration: none;
+}
+.home-link:hover {
+	text-decoration: underline;
+    }
 }

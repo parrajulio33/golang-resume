@@ -206,7 +206,7 @@ func Resume(r models.Resume) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</div></div><div class=\"flex-shrink-0 hidden print:block\"><div class=\"bg-white p-2 rounded-lg shadow-lg\"><img src=\"/static/qr-code.png\" alt=\"QR Code\" class=\"w-24 h-24\"><p class=\"text-xs text-gray-600 text-center mt-1\">Scan me</p></div></div></div></header><div class=\"p-8\"><!-- About --><section class=\"mb-14\"><h2 class=\"text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2\">About</h2><p class=\"text-gray-700 leading-relaxed mb-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</div></div><div class=\"flex-shrink-0 hidden print:block\"><div class=\"bg-white p-2 rounded-lg shadow-lg\"><img src=\"/static/qr-code.png\" alt=\"QR Code\" class=\"w-24 h-24\"><p class=\"text-xs text-gray-600 text-center mt-1\">Scan me</p></div></div></div></header><div class=\"p-8\"><!-- About --><section class=\"mb-0\"><h2 class=\"text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2\">About</h2><p class=\"text-gray-700 leading-relaxed mb-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -219,7 +219,7 @@ func Resume(r models.Resume) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</p></section><!-- Summary --><section class=\"mb-14\"><h2 class=\"text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2\">Summary</h2><p class=\"text-gray-700 leading-relaxed mb-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</p></section><!-- Summary --><section class=\"mb-0\"><h2 class=\"text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2\">Summary</h2><p class=\"text-gray-700 leading-relaxed mb-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,13 +1,12 @@
 package templates
 
-templ Login(supabaseUrl string, supabaseAnonKey string, errorMsg string) {
+templ Login(errorMsg string) {
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Login</title>
-		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 		<style>
 			body {
 				font-family: system-ui, -apple-system, sans-serif;
@@ -57,74 +56,30 @@ templ Login(supabaseUrl string, supabaseAnonKey string, errorMsg string) {
 				transition: background 0.15s;
 			}
 			button:hover { background: #4338ca; }
-			button:disabled { background: #a5a5f5; cursor: not-allowed; }
 			.message {
 				margin-top: 1rem;
 				font-size: 0.85rem;
 				text-align: center;
 				min-height: 1.2em;
+				color: #dc2626;
 			}
-			.message.error { color: #dc2626; }
-			.message.success { color: #16a34a; }
 		</style>
 	</head>
-	<body data-supabase-url={ supabaseUrl } data-supabase-anon-key={ supabaseAnonKey }>
+	<body>
 		<div class="login-card">
 			<h1>Sign in to your account</h1>
-			<form id="login-form">
-				<input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required/>
-				<input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required/>
-				<button type="submit" id="submit-btn">Log In</button>
+			<form method="POST" action="/admin/login">
+				<input type="email" name="email" placeholder="Email" autocomplete="email" required/>
+				<input type="password" name="password" placeholder="Password" autocomplete="current-password" required/>
+				<button type="submit">Log In</button>
 			</form>
-			<p id="message" class="message">
+			<p class="message">
 				if errorMsg != "" {
 					{ errorMsg }
 				}
 			</p>
+			<a href="/" class="home-link">← Back to home</a>
 		</div>
-
-		<script>
-			const body = document.body;
-			const supabaseClient = supabase.createClient(
-				body.dataset.supabaseUrl,
-				body.dataset.supabaseAnonKey
-			);
-
-			const form = document.getElementById("login-form");
-			const messageEl = document.getElementById("message");
-			const submitBtn = document.getElementById("submit-btn");
-
-			function setMessage(text, type) {
-				messageEl.textContent = text;
-				messageEl.className = "message" + (type ? " " + type : "");
-			}
-
-			form.addEventListener("submit", async (e) => {
-				e.preventDefault();
-				submitBtn.disabled = true;
-				setMessage("", "");
-
-				const email = document.getElementById("email").value.trim();
-				const password = document.getElementById("password").value;
-
-				const { data, error } = await supabaseClient.auth.signInWithPassword({
-					email,
-					password,
-				});
-
-				if (error) {
-					setMessage(error.message, "error");
-					submitBtn.disabled = false;
-					return;
-				}
-
-				setMessage("Signed in. Redirecting...", "success");
-
-				// Session is persisted by supabase-js (localStorage) automatically.
-				// Redirect to wherever your app lands post-login.
-				window.location.href = "/admin";
-			});
-		</script>
 	</body>
 	</html>
 }
