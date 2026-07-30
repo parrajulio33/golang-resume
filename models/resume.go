@@ -10,6 +10,7 @@ type Resume struct {
 	LinkedIn          string       `json:"linkedin"`
 	GitHub            string       `json:"github"`
 	About             string       `json:"about"`
+	Summary           string       `json:"summary"`
 	Skills            []Skill      `json:"skills"`
 	Experience        []Experience `json:"experience"`
 	Projects          []Projects   `json:"projects"`
