@@ -77,18 +77,18 @@ templ Resume(r models.Resume) {
                 <!-- About -->
                 <section class="mb-0">
                     <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2">About</h2>
-                    <p class="text-gray-700 leading-relaxed mb-6">{ r.About }</p>
+                    <p class="text-gray-700 leading-relaxed mb-2">{ r.About }</p>
                 </section>
 
                  <!-- Summary -->
                 <section class="mb-0">
                     <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2">Summary</h2>
-                    <p class="text-gray-700 leading-relaxed mb-6">{ r.Summary }</p>
+                    <p class="text-gray-700 leading-relaxed mb-2">{ r.Summary }</p>
                 </section>
 
                 <!-- Skills -->
                 <section class="mb-16">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-2">Skills</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b-2 border-blue-600 pb-0">Skills</h2>
                     <div class="flex flex-wrap gap-2">
                         for _, skill := range r.Skills {
                             <span class="bg-blue-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2">
